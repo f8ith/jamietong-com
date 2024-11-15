@@ -1,0 +1,22 @@
+{
+  "name": "jamietong-com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.html",
+  "scripts": {
+    "build:all": "pnpm build:pages && pnpm compile:css:prod",
+    "build:pages": "rm -rf build && mkdir -p build && cp -r ./src/*.html ./build/",
+    "serve:dev": "pnpm exec live-server src/",
+    "compile:css:prod": "NODE_ENV=production pnpm exec tailwindcss build -i ./src/app.css -o ./build/index.css",
+    "compile:css:dev": "pnpm exec tailwindcss build -i ./src/app.css -o ./src/index.css",
+    "watch": "watch 'pnpm compile:css:dev' ./src/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "tailwindcss": "^3.4.15",
+    "watch": "^1.0.2"
+  }
+}
